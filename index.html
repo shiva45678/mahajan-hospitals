@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Mahajan Hospitals, founded by Dr Kondal Rao Annimalla, MBBS. Discover our commitment to compassionate care and advanced medical services in Vijayawada.">
+    <title>Mahajan Hospitals | Dr Kondal Rao Annimalla | Vijayawada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Colors */
+            --bg-light: #F9FAFB; /* Slightly off-white for a softer look */
+            --surface-light: #FFFFFF;
+            --text-primary-light: #1F2937; /* Darker gray for strong readability */
+            --text-secondary-light: #6B7280; /* Medium gray for less emphasis */
+            --heading-light: #111827; /* Near black for headings */
+            --border-light: #E5E7EB;
+            --shadow-color-light-rgb: 0, 0, 0; /* For rgba shadows */
+            --primary-color-light: #2563EB; /* A modern, accessible blue */
+            --secondary-color-light: #10B981; /* A vibrant green/teal */
+
+            /* Dark Theme Colors */
+            --bg-dark: #111827; /* Dark blue-gray */
+            --surface-dark: #1F2937; /* Slightly lighter surface for cards */
+            --text-primary-dark: #F3F4F6; /* Off-white for text */
+            --text-secondary-dark: #9CA3AF; /* Lighter gray for secondary text */
+            --heading-dark: #FFFFFF;
+            --border-dark: #374151;
+            --shadow-color-dark-rgb: 0, 0, 0; /* For rgba shadows in dark mode, often less intense or different color */
+            --primary-color-dark: #3B82F6; /* Brighter blue for dark mode contrast */
+            --secondary-color-dark: #14B8A6; /* Brighter teal for dark mode */
+
+            /* Default Theme Variables (Initially Light) */
+            --app-bg: var(--bg-light);
+            --app-surface: var(--surface-light);
+            --app-text-primary: var(--text-primary-light);
+            --app-text-secondary: var(--text-secondary-light);
+            --app-heading: var(--heading-light);
+            --app-border: var(--border-light);
+            --app-shadow-color-rgb: var(--shadow-color-light-rgb);
+            --app-primary: var(--primary-color-light);
+            --app-secondary: var(--secondary-color-light);
+
+            /* UI Elements */
+            --card-shadow: 0 4px 6px -1px rgba(var(--app-shadow-color-rgb), 0.1), 0 2px 4px -1px rgba(var(--app-shadow-color-rgb), 0.06);
+            --card-hover-shadow: 0 10px 15px -3px rgba(var(--app-shadow-color-rgb), 0.1), 0 4px 6px -2px rgba(var(--app-shadow-color-rgb), 0.05);
+            --button-shadow: 0 1px 3px 0 rgba(var(--app-shadow-color-rgb), 0.1), 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.06);
+            
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+
+            --transition-fast: all 0.2s ease-in-out;
+            --transition-std: all 0.3s ease-in-out;
+
+            --section-spacing: 100px;
+            --container-padding: 20px;
+        }
+
+        body.dark-theme {
+            --app-bg: var(--bg-dark);
+            --app-surface: var(--surface-dark);
+            --app-text-primary: var(--text-primary-dark);
+            --app-text-secondary: var(--text-secondary-dark);
+            --app-heading: var(--heading-dark);
+            --app-border: var(--border-dark);
+            --app-shadow-color-rgb: var(--shadow-color-dark-rgb);
+            --app-primary: var(--primary-color-dark);
+            --app-secondary: var(--secondary-color-dark);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--app-bg);
+            color: var(--app-text-primary);
+            transition: background-color var(--transition-std), color var(--transition-std);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--app-heading);
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.25em;
+            color: var(--app-text-secondary);
+        }
+        
+        a {
+            color: var(--app-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover {
+            color: var(--app-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(var(--surface-light-rgb, 255, 255, 255), 0.85);
+            backdrop-filter: blur(12px) saturate(180%);
+            box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.05);
+            transition: background-color var(--transition-std), box-shadow var(--transition-std);
+        }
+        body.dark-theme header {
+            background-color: rgba(var(--bg-dark-rgb, 17, 24, 39), 0.85);
+        }
+        :root {
+            --surface-light-rgb: 255, 255, 255;
+            --bg-dark-rgb: 17, 24, 39;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--app-primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--app-text-primary);
+            font-weight: 500;
+            position: relative;
+            padding: 8px 4px;
+            transition: color var(--transition-fast);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--app-primary);
+            transition: width var(--transition-fast);
+        }
+
+        nav a:hover {
+            color: var(--app-primary);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--app-text-secondary);
+            cursor: pointer;
+            font-size: 1.25rem;
+            padding: 8px;
+            border-radius: var(--border-radius-md);
+            transition: color var(--transition-fast), background-color var(--transition-fast);
+        }
+        .theme-toggle:hover {
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb, 37, 99, 235), 0.1);
+        }
+        :root {
+            --primary-color-light-rgb: 37, 99, 235;
+            --primary-color-dark-rgb: 59, 130, 246;
+            --app-primary-rgb: var(--primary-color-light-rgb);
+        }
+        body.dark-theme {
+            --app-primary-rgb: var(--primary-color-dark-rgb);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--app-text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-heading);
+            overflow: hidden;
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        body:not(.dark-theme) #hero {
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(var(--primary-color-light-rgb), 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(var(--secondary-color-light-rgb), 0.1) 0%, transparent 50%);
+            background-color: var(--app-bg);
+            color: var(--app-heading);
+        }
+        body.dark-theme #hero {
+            background-image:
+                radial-gradient(circle at 15% 25%, rgba(var(--primary-color-dark-rgb), 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(var(--secondary-color-dark-rgb), 0.15) 0%, transparent 60%);
+            background-color: var(--app-bg);
+            color: var(--app-heading);
+        }
+        :root {
+            --secondary-color-light-rgb: 16, 185, 129;
+            --secondary-color-dark-rgb: 20, 184, 166;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 var(--container-padding);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 0.5em;
+            line-height: 1.1;
+            color: var(--app-heading);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            margin-bottom: 0.75em;
+            font-weight: 400;
+            color: var(--app-text-secondary);
+        }
+        #dr-name {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 700;
+            color: var(--app-heading);
+            display: block;
+            margin-bottom: 0.25em;
+        }
+        #mbbs-founder {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-weight: 500;
+            color: var(--app-text-secondary);
+            display: block;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1.5em;
+            font-weight: 700;
+            color: var(--app-primary);
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-std);
+            cursor: pointer;
+            font-size: 1rem;
+            border: 2px solid transparent;
+            box-shadow: var(--button-shadow);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .btn:active {
+            transform: translateY(0px);
+        }
+
+        .btn-primary {
+            background-color: var(--app-primary);
+            color: var(--surface-light);
+            border-color: var(--app-primary);
+        }
+        body.dark-theme .btn-primary {
+            color: var(--text-primary-dark);
+        }
+        .btn-primary:hover {
+            background-color: var(--app-secondary);
+            border-color: var(--app-secondary);
+            color: var(--surface-light);
+        }
+        body.dark-theme .btn-primary:hover {
+            color: var(--text-primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--app-primary);
+            border-color: var(--app-primary);
+        }
+        .btn-secondary:hover {
+            background-color: var(--app-primary);
+            color: var(--surface-light);
+        }
+        body.dark-theme .btn-secondary:hover {
+            color: var(--text-primary-dark);
+        }
+
+        .hero-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-decoration::before,
+        .hero-decoration::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 12s ease-in-out infinite alternate;
+        }
+        .hero-decoration::before {
+            width: clamp(200px, 30vw, 400px);
+            height: clamp(200px, 30vw, 400px);
+            background: var(--app-primary);
+            top: -10%; right: -15%;
+        }
+        .hero-decoration::after {
+            width: clamp(300px, 40vw, 600px);
+            height: clamp(300px, 40vw, 600px);
+            background: var(--app-secondary);
+            bottom: -15%; left: -20%;
+            animation-duration: 15s;
+            animation-direction: alternate-reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(15px, -10px) scale(1.05); }
+            100% { transform: translate(-10px, 15px) scale(0.95); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: var(--section-spacing) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        #about { background-color: var(--app-bg); }
+        #services { background-color: var(--app-surface); }
+        #testimonials { background-color: var(--app-surface); }
+        #contact { background-color: var(--app-bg); }
+        #donate { background-color: var(--app-surface); }
+
+        .section-heading {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+            position: relative;
+            color: var(--app-heading);
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--app-primary), var(--app-secondary));
+            border-radius: var(--border-radius-sm);
+        }
+
+        .section-subheading {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px;
+            color: var(--app-text-secondary);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            justify-content: center;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 1.5em;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 24px;
+            margin-top: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            background-color: var(--app-surface);
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-std), box-shadow var(--transition-std);
+            border: 1px solid var(--app-border);
+        }
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--app-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-weight: 500;
+            color: var(--app-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background-color: var(--app-bg);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-std);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--app-border);
+        }
+        body.dark-theme .service-card {
+            background-color: var(--app-surface);
+        }
+        #services.bg-surface .service-card {
+            background-color: var(--app-bg);
+        }
+        #services.bg-bg .service-card {
+            background-color: var(--app-surface);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .service-card-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--app-heading);
+        }
+
+        .service-card-desc {
+            color: var(--app-text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .service-card-link {
+            color: var(--app-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            transition: color var(--transition-fast), transform var(--transition-fast);
+        }
+        .service-card-link:hover {
+            color: var(--app-secondary);
+            transform: translateX(4px);
+        }
+        .service-card-link i {
+            transition: transform var(--transition-fast);
+        }
+        .service-card-link:hover i {
+            transform: translateX(2px);
+        }
+
+        /* Testimonials Section */
+        .testimonial-slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 48px;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 24px;
+            padding: 10px 0 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--app-primary) transparent;
+        }
+        .testimonial-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        .testimonial-grid::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .testimonial-grid::-webkit-scrollbar-thumb {
+            background-color: var(--app-primary);
+            border-radius: 10px;
+            border: 2px solid transparent;
+        }
+
+        .testimonial-card {
+            flex: 0 0 clamp(280px, 80vw, 340px);
+            scroll-snap-align: start;
+            background-color: var(--app-bg);
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-std);
+            position: relative;
+            border: 1px solid var(--app-border);
+        }
+        #testimonials.bg-surface .testimonial-card {
+            background-color: var(--app-bg);
+        }
+        #testimonials.bg-bg .testimonial-card {
+            background-color: var(--app-surface);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .quote-icon {
+            position: absolute;
+            color: rgba(var(--app-primary-rgb), 0.1);
+            top: 16px;
+            right: 16px;
+            font-size: 2.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: var(--app-text-secondary);
+        }
+
+        .testimonial-person {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .testimonial-info h4 {
+            margin: 0 0 2px 0;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--app-heading);
+        }
+        .testimonial-info p {
+            margin: 0;
+            color: var(--app-text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--app-surface);
+            border: 1px solid var(--app-border);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(var(--app-shadow-color-rgb), 0.08);
+            transition: var(--transition-std);
+            color: var(--app-primary);
+        }
+        .slider-arrow:hover {
+            background-color: var(--app-primary);
+            color: var(--surface-light);
+            border-color: var(--app-primary);
+            box-shadow: 0 4px 12px rgba(var(--app-shadow-color-rgb), 0.12);
+        }
+        body.dark-theme .slider-arrow:hover {
+            color: var(--text-primary-dark);
+        }
+        .left-arrow { left: -15px; }
+        .right-arrow { right: -15px; }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 48px;
+            gap: 32px;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            width: 100%;
+            background-color: var(--app-surface);
+            padding: 24px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--app-border);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .contact-item:last-child { margin-bottom: 0; }
+
+        .contact-icon {
+            font-size: 1.25rem;
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            padding: 10px;
+            border-radius: var(--border-radius-md);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-text h3 {
+            margin: 0 0 6px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--app-heading);
+        }
+        .contact-text p, .contact-text a {
+            margin: 0;
+            color: var(--app-text-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+        .contact-text a:hover {
+            color: var(--app-primary);
+            text-decoration: underline;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .contact-btn {
+            flex-grow: 1;
+            min-width: 180px;
+        }
+
+        /* Donate Section */
+        .donate-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-primary-dark);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-dark);
+        }
+        footer h3 { color: var(--heading-dark); }
+        footer p, footer a, footer .footer-quote { color: var(--text-secondary-dark); }
+        footer a:hover { color: var(--secondary-color-dark); }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color-dark), var(--secondary-color-dark));
+            border-radius: 2px;
+        }
+
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            transition: var(--transition-fast);
+            padding: 4px 0;
+        }
+        .footer-links a:hover {
+            padding-left: 6px;
+        }
+        .footer-links a i { margin-right: 8px; }
+
+        .footer-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        .footer-quote::before, .footer-quote::after {
+            font-size: 1.5em;
+            color: var(--secondary-color-dark);
+            vertical-align: middle;
+        }
+        .footer-quote::before { content: '“ '; }
+        .footer-quote::after { content: ' ”'; }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .heart {
+            color: #e91e63;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--app-primary);
+            color: var(--surface-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-std);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(var(--app-shadow-color-rgb), 0.15);
+            border: none;
+        }
+        body.dark-theme .scroll-top {
+            color: var(--text-primary-dark);
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            background-color: var(--app-secondary);
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        .animated {
+            opacity: 0;
+        }
+        .fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-spacing: 70px;
+                --container-padding: 15px;
+            }
+            .container { padding: 0 var(--container-padding); }
+
+            .header-content { height: 64px; }
+            .logo {
+                font-size: 1.2rem;
+                white-space: nowrap;
+            }
+            .nav-desktop { display: none; }
+            .mobile-menu-btn { display: block; }
+            .header-actions { display: flex; align-items: center; gap: 8px; }
+            .theme-toggle { order: 1; }
+            .mobile-menu-btn { order: 2; }
+
+            #hero { padding-top: 64px; min-height: auto; padding-bottom: 40px; }
+            .hero-content { padding: 20px 0; }
+            .btn-row { flex-direction: column; gap: 12px; }
+            .btn { width: 100%; padding: 12px; font-size: 0.95rem; }
+
+            .section-subheading { margin-bottom: 32px; }
+            .about-content { gap: 32px; }
+            .about-text p { font-size: 1rem; }
+            .stats-row { flex-direction: column; gap: 20px; }
+            .stat-card { max-width: 100%; padding: 20px; }
+
+            .card-grid { gap: 20px; }
+            .service-card-content { padding: 20px; }
+            .service-card-title { font-size: 1.15rem; }
+            .service-card-desc { font-size: 0.9rem; }
+
+            .testimonial-grid { gap: 16px; padding-bottom: 16px; }
+            .testimonial-card { padding: 20px; }
+            .slider-arrow { width: 40px; height: 40px; }
+            .left-arrow { left: 5px; }
+            .right-arrow { right: 5px; }
+
+            .contact-content { gap: 24px; }
+            .contact-info { padding: 20px; }
+            .contact-item { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+            .contact-icon { margin-bottom: 8px; }
+            .contact-buttons { flex-direction: column; gap: 12px; }
+            .contact-btn { width: 100%; padding: 12px; }
+
+            .footer-content { flex-direction: column; gap: 32px; padding: 0 var(--container-padding); }
+            .footer-col { min-width: auto; }
+            .footer-bottom { padding: 20px var(--container-padding) 0; font-size: 0.85rem; }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            max-width: 80vw;
+            height: 100vh;
+            background-color: var(--app-surface);
+            z-index: 1001;
+            padding: 24px;
+            transition: right 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: -5px 0 25px rgba(var(--app-shadow-color-rgb), 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav.open {
+            right: 0;
+        }
+        .mobile-nav-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--app-text-secondary);
+            font-size: 1.75rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 60px 0 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav li {
+            margin-bottom: 8px;
+        }
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--app-text-primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            padding: 12px 16px;
+            border-radius: var(--border-radius-md);
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        .mobile-nav a:hover, .mobile-nav a:focus {
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            color: var(--app-primary);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--app-shadow-color-rgb), 0.4);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-std), visibility var(--transition-std);
+        }
+        .overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+      <link rel="icon" href="logo.png" type="image/png">
+      <link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Mahajan Hospitals</a>
+                <nav class="nav-desktop">
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Open menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <button class="mobile-nav-close" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ul>
+            <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#services" class="mobile-nav-link">Services</a></li>
+            <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="#donate" class="mobile-nav-link">Donate</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-decoration"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animated">Mahajan Hospitals</h1>
+                <p class="hero-subtitle animated"><span id="dr-name">Dr Kondal Rao Annimalla</span><span id="mbbs-founder">MBBS | founder of Mahajan Hospitals</span></p>
+                <p class="hero-tagline animated">Compassionate Care, Advanced Medicine</p>
+                <div class="btn-row animated">
+                    <a href="https://packages.mahajanhospitals.in" target="_blank" class="btn btn-primary">
+                        <i class="fa-solid fa-vial"></i> Book Home Tests Vijayawada
+                    </a>
+                    <a href="#" target="_blank" class="btn btn-secondary">
+                        <i class="fa-solid fa-brain"></i> Mahajan Ai
+                    </a>
+                    <a href="#" target="_blank" class="btn btn-secondary">
+                        <i class="fa-solid fa-hospital"></i> Ai hospital management system
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fa-solid fa-envelope"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-heading animated">About Mahajan Hospitals</h2>
+            <p class="section-subheading animated">Founded by Dr. Kondal Rao Annimalla, we are dedicated to providing exceptional medical care to the Vijayawada community and beyond.</p>
+            <div class="about-content animated">
+                <div class="about-text">
+                    <p>Mahajan Hospitals is a leading healthcare institution in Vijayawada, committed to delivering high-quality, patient-centric medical services. Our state-of-the-art facility is equipped with modern technology and staffed by a team of experienced and compassionate healthcare professionals.</p>
+                    <p>Our mission is to provide comprehensive and affordable healthcare for everyone. We believe in a holistic approach to healing, focusing on not just treating illness but also promoting wellness and a healthy lifestyle for all our patients.</p>
+                    <div class="stats-row">
+                        <div class="stat-card animated">
+                            <div class="stat-number">10k+</div>
+                            <div class="stat-label">Patients Treated</div>
+                        </div>
+                        <div class="stat-card animated">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Patient Satisfaction</div>
+                        </div>
+                        <div class="stat-card animated">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Emergency Care</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">Our Services</h2>
+            <p class="section-subheading animated">Comprehensive healthcare solutions to meet all your needs.</p>
+            <div class="card-grid">
+                <div class="service-card animated">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">Cardiology</h3>
+                        <p class="service-card-desc">Advanced cardiac care, from diagnostics to intervention, ensuring your heart is in the best hands.</p>
+                        <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animated">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">Orthopedics</h3>
+                        <p class="service-card-desc">Comprehensive care for bone and joint health, including surgery and rehabilitation.</p>
+                        <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animated">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">General Medicine</h3>
+                        <p class="service-card-desc">Expert diagnosis and treatment for a wide range of common and complex illnesses.</p>
+                        <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animated">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">Emergency Care</h3>
+                        <p class="service-card-desc">Our 24/7 emergency department is ready to handle any medical crisis with speed and expertise.</p>
+                        <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animated">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">Diagnostics Lab</h3>
+                        <p class="service-card-desc">State-of-the-art laboratory services for accurate and timely diagnostic results.</p>
+                        <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animated">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">Surgical Services</h3>
+                        <p class="service-card-desc">Advanced surgical procedures performed by skilled surgeons in modern operating theaters.</p>
+                        <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">Patient Testimonials</h2>
+            <p class="section-subheading animated">Hear from patients who have experienced care at Mahajan Hospitals.</p>
+            <div class="testimonial-slider-container">
+                <button class="slider-arrow left-arrow" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-arrow right-arrow" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"The care I received at Mahajan Hospitals was exceptional. The doctors were knowledgeable, and the staff was incredibly supportive throughout my treatment."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>P. Kumar</h4>
+                                <p>Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"I was impressed by how quickly and accurately my condition was diagnosed. The expertise of the medical staff provided great peace of mind."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>S. Reddy</h4>
+                                <p>Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"The follow-up care and attention to detail from the nursing team were wonderful. I felt genuinely cared for during my recovery."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>A. Sharma</h4>
+                                <p>Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"Mahajan Hospitals truly represents the best of healthcare in Vijayawada. The seamless integration of technology and human expertise is remarkable."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>R. Singh</h4>
+                                <p>Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-heading animated">Contact Mahajan Hospitals</h2>
+            <p class="section-subheading animated">Get in touch with us for appointments or inquiries.</p>
+            <div class="contact-content">
+                <div class="contact-info animated">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-text">
+                            <h3>Address</h3>
+                            <p>Vijayawada, Andhra Pradesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p><a href="tel:9985815095">+91 99858 15095</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p><a href="mailto:contact@mahajanhospitals.in">contact@mahajanhospitals.in</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-buttons btn-row animated">
+                    <a href="https://maps.app.goo.gl/hKBe9qviMrH9wHs29" target="_blank" class="btn btn-secondary contact-btn">
+                        <i class="fa-solid fa-map-location-dot"></i> View on Maps
+                    </a>
+                    <a href="mailto:contact@mahajanhospitals.in" class="btn btn-primary contact-btn">
+                        <i class="fa-solid fa-calendar-check"></i> Book Appointment
+                    </a>
+                    <a href="tel:9985815095" class="btn btn-secondary contact-btn">
+                        <i class="fa-solid fa-phone-volume"></i> Call Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">Support Our Mission</h2>
+            <p class="section-subheading animated">Help us enhance our facilities and support community health initiatives. Your contribution makes a difference.</p>
+            <div class="donate-button-container animated">
+                <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_QucG47lZk68gE2" async> </script> </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Mahajan Hospitals</h3>
+                    <p class="footer-quote">Technology enhances our ability to care, but compassion is what truly heals. – Dr. Kondal Rao Annimalla, Founder</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" target="_blank"><i class="fa-solid fa-brain"></i> Mahajan Ai Platform</a></li>
+                        <li><a href="#" target="_blank"><i class="fa-solid fa-hospital"></i> HMS System</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Mahajan Hospitals. Made with <span class="heart"><i class="fa-solid fa-heart"></i></span> in Vijayawada.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dark mode toggle
+            const themeToggleButton = document.querySelector('.theme-toggle');
+            const body = document.body;
+            const moonIconClass = 'fa-moon';
+            const sunIconClass = 'fa-sun';
+            const currentThemeIcon = themeToggleButton.querySelector('i');
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    body.classList.add('dark-theme');
+                    currentThemeIcon.classList.remove(moonIconClass);
+                    currentThemeIcon.classList.add(sunIconClass);
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-theme');
+                    currentThemeIcon.classList.remove(sunIconClass);
+                    currentThemeIcon.classList.add(moonIconClass);
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            themeToggleButton.addEventListener('click', () => {
+                body.classList.contains('dark-theme') ? applyTheme('light') : applyTheme('dark');
+            });
+
+            // Apply saved theme on load or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else if (prefersDark) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light'); // Default to light
+            }
+
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            const toggleMobileMenu = (open) => {
+                if (open) {
+                    mobileNav.classList.add('open');
+                    overlay.classList.add('open');
+                    body.style.overflow = 'hidden';
+                } else {
+                    mobileNav.classList.remove('open');
+                    overlay.classList.remove('open');
+                    body.style.overflow = '';
+                }
+            };
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleMobileMenu(true));
+            if (mobileNavClose) mobileNavClose.addEventListener('click', () => toggleMobileMenu(false));
+            if (overlay) overlay.addEventListener('click', () => toggleMobileMenu(false));
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMobileMenu(false));
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll to top button visibility & functionality
+            const scrollTopButton = document.querySelector('.scroll-top');
+            if (scrollTopButton) {
+                window.addEventListener('scroll', () => {
+                    scrollTopButton.classList.toggle('active', window.scrollY > 300);
+                });
+                scrollTopButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Testimonial slider functionality
+            const testimonialGrid = document.querySelector('.testimonial-grid');
+            const leftArrow = document.querySelector('.left-arrow');
+            const rightArrow = document.querySelector('.right-arrow');
+            
+            if (testimonialGrid && leftArrow && rightArrow) {
+                const scrollTestimonial = (direction) => {
+                    const testimonialCards = testimonialGrid.querySelectorAll('.testimonial-card');
+                    if (testimonialCards.length > 0) {
+                        const cardWidth = testimonialCards[0].offsetWidth;
+                        const gridStyle = window.getComputedStyle(testimonialGrid);
+                        let gap = parseFloat(gridStyle.gap) || 24;
+                        const scrollAmount = (cardWidth + gap) * direction;
+                        testimonialGrid.scrollBy({
+                            left: scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+                leftArrow.addEventListener('click', () => scrollTestimonial(-1));
+                rightArrow.addEventListener('click', () => scrollTestimonial(1));
+            }
+
+            // Intersection Observer for animations
+            const animatedElements = document.querySelectorAll('.animated');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fadeIn');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(element => observer.observe(element));
+
+            // Set current year in footer
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
