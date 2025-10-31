@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahajan Hospitals | Dr Kondal Rao Annimalla | Vijayawada</title>
+    <meta name="description" content="Welcome to Mahajan Hospitals, founded by Dr Kondal Rao Annimalla, MBBS. Discover our commitment to compassionate care and advanced medical services in Vijayawada.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-light: #F9FAFB;
+            --surface-light: #FFFFFF;
+            --text-primary-light: #1F2937;
+            --text-secondary-light: #6B7280;
+            --heading-light: #111827;
+            --border-light: #E5E7EB;
+            --shadow-color-light-rgb: 0, 0, 0;
+            --primary-color-light: #2563EB;
+            --secondary-color-light: #10B981;
+            --primary-color-light-rgb: 37, 99, 235;
+            --secondary-color-light-rgb: 16, 185, 129;
+
+            --bg-dark: #111827;
+            --surface-dark: #1F2937;
+            --text-primary-dark: #F3F4F6;
+            --text-secondary-dark: #9CA3AF;
+            --heading-dark: #FFFFFF;
+            --border-dark: #374151;
+            --shadow-color-dark-rgb: 0, 0, 0;
+            --primary-color-dark: #3B82F6;
+            --secondary-color-dark: #14B8A6;
+            --primary-color-dark-rgb: 59, 130, 246;
+            --secondary-color-dark-rgb: 20, 184, 166;
+
+            --app-bg: var(--bg-light);
+            --app-surface: var(--surface-light);
+            --app-text-primary: var(--text-primary-light);
+            --app-text-secondary: var(--text-secondary-light);
+            --app-heading: var(--heading-light);
+            --app-border: var(--border-light);
+            --app-shadow-color-rgb: var(--shadow-color-light-rgb);
+            --app-primary: var(--primary-color-light);
+            --app-secondary: var(--secondary-color-light);
+            --app-primary-rgb: var(--primary-color-light-rgb);
+
+            --card-shadow: 0 4px 6px -1px rgba(var(--app-shadow-color-rgb), 0.1), 0 2px 4px -1px rgba(var(--app-shadow-color-rgb), 0.06);
+            --card-hover-shadow: 0 10px 15px -3px rgba(var(--app-shadow-color-rgb), 0.1), 0 4px 6px -2px rgba(var(--app-shadow-color-rgb), 0.05);
+            --button-shadow: 0 1px 3px 0 rgba(var(--app-shadow-color-rgb), 0.1), 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.06);
+            
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+
+            --transition-std: all 0.3s ease-in-out;
+        }
+
+        html.dark {
+            --app-bg: var(--bg-dark);
+            --app-surface: var(--surface-dark);
+            --app-text-primary: var(--text-primary-dark);
+            --app-text-secondary: var(--text-secondary-dark);
+            --app-heading: var(--heading-dark);
+            --app-border: var(--border-dark);
+            --app-shadow-color-rgb: var(--shadow-color-dark-rgb);
+            --app-primary: var(--primary-color-dark);
+            --app-secondary: var(--secondary-color-dark);
+            --app-primary-rgb: var(--primary-color-dark-rgb);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--app-bg);
+            color: var(--app-text-primary);
+            transition: background-color var(--transition-std), color var(--transition-std);
+            line-height: 1.7;
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(15px, -10px) scale(1.05); }
+            100% { transform: translate(-10px, 15px) scale(0.95); }
+        }
+         @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+        "firebase/database": "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js",
+        "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/"
+      }
+    }
+    </script>
+  <script type="module" crossorigin src="/assets/index-CoxPvnme.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
